@@ -1,0 +1,240 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:viewmodels="clr-namespace:PayMoni.ViewModels"
+             xmlns:views="clr-namespace:LitaCredit.Views"
+             mc:Ignorable="d"
+             x:Class="PayMoni.Views.UpdateProfilePage"
+             BackgroundColor="White"
+             Visual="Material"
+             Title="Update Profile">
+
+    <ContentPage.BindingContext>
+        <viewmodels:UpdateProfileViewModel/>
+    </ContentPage.BindingContext>
+    <ContentPage.Content>
+
+        <AbsoluteLayout>
+
+            <FlexLayout Direction="Column"
+                        InputTransparent="{Binding IsBusy}"
+                        Opacity="{Binding Opacity}"
+                        AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0, 0, 1, 1"
+                        AlignContent="SpaceEvenly"
+                        AlignItems="Stretch"
+                        JustifyContent="SpaceBetween"
+                        Padding="20">
+
+                <ContentView VerticalOptions="Start"
+                         HorizontalOptions="StartAndExpand"
+                             HeightRequest="80">
+
+                    <Image Source="paymoni_logo"
+                       Margin="0, 0, 0, 0"
+                       Aspect="AspectFit"
+                   HorizontalOptions="Center"/>
+
+                </ContentView>
+
+
+                <ScrollView HorizontalScrollBarVisibility="Never">
+                    <StackLayout>
+                        <Label Text="Update profile"
+                   FontAttributes="Bold"
+                   FontSize="25"/>
+
+                        <Label Text="Enter personal information"
+                    FontSize="20"
+                       TextColor="{StaticResource label_color_blue}"
+                       Margin="0, 0, 0, 0"/>
+
+                        <!--<BoxView Color="Gray"
+                         Margin="0, 15, 0, 15"
+                        HeightRequest="2"
+                        HorizontalOptions="FillAndExpand"/>-->
+
+                        <StackLayout Margin="10">
+
+                            <Frame Padding="10, 0, 0, 0"
+                           HasShadow="False"
+                           BorderColor="{StaticResource label_color_green}"
+                           CornerRadius="4"
+                           Margin="0, 15, 0, 0"
+                           Visual="Material">
+
+                                <FlexLayout Direction="Column"
+                                JustifyContent="SpaceEvenly"
+                                AlignContent="Stretch"
+                                AlignItems="Stretch"
+                                VerticalOptions="CenterAndExpand"
+                                Padding="0"
+                                    Margin="0, 0, 0, 0">
+                                    <!--<Label Text=" Username"
+                           VerticalOptions="CenterAndExpand"
+                           Margin="0"
+                           FontSize="16"/>-->
+                                    <Entry Text="{Binding Firstname, Mode=OneWayToSource}" 
+                               BackgroundColor="Transparent"
+                               VerticalOptions="CenterAndExpand"
+                               Margin="0"
+                               Placeholder="Phone number"
+                                   Visual="Material"/>
+                                </FlexLayout>
+                            </Frame>
+
+                            <Frame Padding="10, 0, 0, 0"
+                           HasShadow="False"
+                           BorderColor="{StaticResource label_color_green}"
+                           CornerRadius="4"
+                           Margin="0, 15, 0, 0"
+                           Visual="Material">
+
+                                <FlexLayout Direction="Column"
+                                JustifyContent="SpaceEvenly"
+                                AlignContent="Stretch"
+                                AlignItems="Stretch"
+                                VerticalOptions="CenterAndExpand"
+                                Padding="0"
+                                    Margin="0, 0, 0, 0">
+                                    <!--<Label Text=" Username"
+                           VerticalOptions="CenterAndExpand"
+                           Margin="0"
+                           FontSize="16"/>-->
+                                    <Entry Text="{Binding Lastname, Mode=OneWayToSource}" 
+                               BackgroundColor="Transparent"
+                               VerticalOptions="CenterAndExpand"
+                               Margin="0"
+                               Placeholder="Last name"
+                                   Visual="Material"/>
+                                </FlexLayout>
+                            </Frame>
+
+                            <Frame Padding="10, 0, 0, 0"
+                           HasShadow="False"
+                           BorderColor="{StaticResource label_color_green}"
+                           CornerRadius="4"
+                           Margin="0, 15, 0, 0"
+                           Visual="Material">
+
+                                <FlexLayout Direction="Column"
+                                JustifyContent="SpaceEvenly"
+                                AlignContent="Stretch"
+                                AlignItems="Stretch"
+                                VerticalOptions="CenterAndExpand"
+                                Padding="0"
+                                    Margin="0, 0, 0, 0">
+                                    <!--<Label Text=" Username"
+                           VerticalOptions="CenterAndExpand"
+                           Margin="0"
+                           FontSize="16"/>-->
+                                    <Entry Text="{Binding Email, Mode=OneWayToSource}" 
+                               BackgroundColor="Transparent"
+                               VerticalOptions="CenterAndExpand"
+                               Margin="0"
+                               Placeholder="Email"
+                                   Visual="Material"/>
+                                </FlexLayout>
+                            </Frame>
+
+                            <Frame Padding="10, 0, 0, 0"
+                           HasShadow="False"
+                           BorderColor="{StaticResource label_color_green}"
+                           CornerRadius="4"
+                           Margin="0, 15, 0, 0"
+                           Visual="Material">
+
+                                <FlexLayout Direction="Column"
+                                JustifyContent="SpaceEvenly"
+                                AlignContent="Stretch"
+                                AlignItems="Stretch"
+                                VerticalOptions="CenterAndExpand"
+                                Padding="0"
+                                    Margin="0, 0, 0, 0">
+                                    <!--<Label Text=" Username"
+                           VerticalOptions="CenterAndExpand"
+                           Margin="0"
+                           FontSize="16"/>-->
+                                    <Entry Text="{Binding BVN, Mode=OneWayToSource}" 
+                               BackgroundColor="Transparent"
+                               VerticalOptions="CenterAndExpand"
+                               Margin="0"
+                               Placeholder="BVN"
+                                   Visual="Material"/>
+                                </FlexLayout>
+                            </Frame>
+
+                            <Frame Padding="10, 0, 0, 0"
+                           HasShadow="False"
+                           BorderColor="{StaticResource label_color_green}"
+                           CornerRadius="4"
+                           Margin="0, 15, 0, 0"
+                           Visual="Material">
+
+                                <FlexLayout Direction="Column"
+                                JustifyContent="SpaceEvenly"
+                                AlignContent="Stretch"
+                                AlignItems="Stretch"
+                                VerticalOptions="CenterAndExpand"
+                                Padding="0"
+                                    Margin="0, 0, 0, 0">
+                                    <!--<Label Text=" Username"
+                           VerticalOptions="CenterAndExpand"
+                           Margin="0"
+                           FontSize="16"/>-->
+                                    <Entry Text="{Binding City, Mode=OneWayToSource}" 
+                               BackgroundColor="Transparent"
+                               VerticalOptions="CenterAndExpand"
+                               Margin="0"
+                               Placeholder="City"
+                                   Visual="Material"/>
+                                </FlexLayout>
+                            </Frame>
+
+                        </StackLayout>
+
+
+                        <AbsoluteLayout Margin="0, 25, 0, 25">
+                            <Button Text="Submit" AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="1, 1, 1, 1"
+                            Style="{x:StaticResource button_style_blue}"
+                            HorizontalOptions="FillAndExpand"
+                            FontSize="20"
+                            Padding="10, 5, 10, 5"
+                            Command="{Binding OnSubmitCommand}"/>
+
+                            <ActivityIndicator Grid.Row="0" AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="1, 1, 1, 1"
+                                       HorizontalOptions="Start"
+                                       VerticalOptions="Center"
+                                       Margin="5"
+                                       HeightRequest="24"
+                                       Color="White"
+                                       IsRunning="{Binding IsBusy}"
+                                       IsVisible="{Binding IsBusy}"/>
+                        </AbsoluteLayout>
+                    </StackLayout>
+                </ScrollView>
+                
+
+
+                <StackLayout Padding="5"
+                         Spacing="0"
+                         HorizontalOptions="StartAndExpand"
+                         VerticalOptions="Start">
+
+                </StackLayout>
+            </FlexLayout>
+
+            <!--<views:BusyIndicatorModalView IsVisible="{Binding IsBusy}"
+                                          ModalTitle="Verifying number"
+                                          ModalActivityIndicatorVisible="True"
+                                          AbsoluteLayout.LayoutFlags="All"
+                                          AbsoluteLayout.LayoutBounds=".5, .5, 1, 1"
+                                          HorizontalOptions="Center"
+                                          VerticalOptions="Center"/>-->
+        </AbsoluteLayout>
+        
+
+        
+    </ContentPage.Content>
+</ContentPage>

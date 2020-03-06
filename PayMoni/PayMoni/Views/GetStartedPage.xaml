@@ -1,0 +1,132 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="PayMoni.Views.GetStartedPage"
+             xmlns:cards ="clr-namespace:PanCardView;assembly=PanCardView"
+             xmlns:controls="clr-namespace:PanCardView.Controls;assembly=PanCardView"
+             xmlns:viewmodels="clr-namespace:PayMoni.ViewModels"
+             NavigationPage.HasNavigationBar="false"
+             Visual="Material">
+
+    <ContentPage.BindingContext>
+        <viewmodels:GetStartedViewModel/>
+    </ContentPage.BindingContext>
+
+    <!--<ContentPage.Resources>
+        <StyleSheet Source="/StyleSheets/styles.css"/>
+    </ContentPage.Resources>-->
+
+    <ContentPage.Content>
+        <Grid VerticalOptions="FillAndExpand"
+              Padding="0"
+              Margin="0">
+
+            <cards:CarouselView ItemsSource="{Binding GetStartedCarouselView}" Grid.RowSpan="2"
+                                HorizontalOptions="FillAndExpand"
+                                VerticalOptions="FillAndExpand"
+                                SlideShowDuration="3900"
+                                IsCyclical="False"
+                                SelectedIndex="{Binding SelectedImage}">
+                <cards:CarouselView.ItemTemplate>
+                    <DataTemplate>
+                        <Grid HorizontalOptions="FillAndExpand"
+                              Margin="0"
+                              Padding="0">
+
+                            <Image Source="{Binding ImageResource}" Grid.Row="0"
+                                   HorizontalOptions="FillAndExpand"
+                                   VerticalOptions="FillAndExpand"
+                                   Aspect="AspectFit"/>
+
+                            <ContentView Grid.Row="0" Grid.Column="0"
+                                         VerticalOptions="CenterAndExpand"
+                                         HorizontalOptions="FillAndExpand">
+                                <Label
+                                   Margin="18, 80, 18, 0"
+                                   VerticalOptions="End"
+                                   HorizontalOptions="CenterAndExpand"
+                                    HorizontalTextAlignment="Center"
+                                   TextColor="{StaticResource label_color_dark}">
+
+                                    <Label.FormattedText>
+                                        <FormattedString>
+                                            <Span Text="{Binding ImageLabel1, StringFormat='{0}   '}"
+                                              FontSize="30"
+                                              FontAttributes="Bold"/>
+                                            <Span Text="{Binding ImageLabel2, StringFormat='{0}'}"
+                                              FontSize="20"/>
+                                        </FormattedString>
+                                    </Label.FormattedText>
+
+                                </Label>
+                            </ContentView>
+                            
+
+                        </Grid>
+                    </DataTemplate>
+                </cards:CarouselView.ItemTemplate>
+            </cards:CarouselView>
+
+            <Image Source="paymoni_logo.png" Grid.Row="0"
+                   VerticalOptions="Start"
+                   HorizontalOptions="CenterAndExpand"
+                   Margin="20"
+                   HeightRequest="60"/>
+
+            <StackLayout Orientation="Vertical" Grid.Row="1"
+                         Padding="20"
+                         Spacing="15"
+                         VerticalOptions="EndAndExpand"
+                         HorizontalOptions="CenterAndExpand">
+
+                <StackLayout Orientation="Horizontal"
+                             HorizontalOptions="Center"
+                             Spacing="10"
+                             Margin="10">
+                    <controls:IndicatorItemView HeightRequest="12"
+                                                WidthRequest="12"
+                                                CornerRadius="6"
+                                                BackgroundColor="{Binding IndicatorColor1}"
+                                                BorderColor="Gray"/>
+                    <controls:IndicatorItemView HeightRequest="12"
+                                                WidthRequest="12"
+                                                CornerRadius="6"
+                                                BackgroundColor="{Binding IndicatorColor2}"
+                                                BorderColor="Gray"/>
+                    <controls:IndicatorItemView HeightRequest="12"
+                                                WidthRequest="12"
+                                                CornerRadius="6"
+                                                BackgroundColor="{Binding IndicatorColor3}"
+                                                BorderColor="Gray"/>
+                </StackLayout>
+
+
+                <Button Style="{StaticResource button_style_blue}"
+                        Text="Sign in"
+                        HorizontalOptions="Center"
+                        VerticalOptions="Center"
+                        WidthRequest="200"
+                        HeightRequest="45"
+                        Padding="0"
+                        Command="{Binding OnLoginCommand}"/>
+
+                <Button Style="{StaticResource button_style_green}"
+                        Text="Sign up"
+                        HorizontalOptions="Center"
+                        VerticalOptions="Center"
+                        WidthRequest="200"
+                        HeightRequest="45"
+                        Padding="0"
+                        Command="{Binding OnRegisterCommand}"/>
+
+                
+            </StackLayout>
+
+
+
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

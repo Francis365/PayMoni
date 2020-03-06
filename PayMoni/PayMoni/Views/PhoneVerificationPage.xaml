@@ -1,0 +1,209 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:viewmodels="clr-namespace:PayMoni.ViewModels"
+             xmlns:behaviours="clr-namespace:PayMoni.Behaviours"
+             mc:Ignorable="d"
+             x:Class="PayMoni.Views.PhoneVerificationPage"
+             BackgroundColor="White"
+             Title="Phone Verification"
+             Visual="Material">
+
+    <ContentPage.BindingContext>
+        <viewmodels:PhoneVerificationViewModel/>
+    </ContentPage.BindingContext>
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style TargetType="Entry">
+                <Setter Property="MaxLength" Value="2"/>
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <ContentPage.Content>
+        <AbsoluteLayout>
+            <Grid HorizontalOptions="FillAndExpand"
+                  InputTransparent="{Binding IsBusy}"
+                  Opacity="{Binding Opacity}"
+                  AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0, 0, 1, 1"
+                  Padding="25">
+                
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+
+                <!--<views:MessageBarView Message="Enter OTP code sent to your 08033444441" Grid.Row="0"/>-->
+
+                <Image Source="logo" Grid.Row="0"
+                   HorizontalOptions="Start"
+                   Aspect="AspectFit"
+                   HeightRequest="60"
+                   Margin="0, 0, 0, 30"/>
+
+                <StackLayout Orientation="Vertical" Grid.Row="1"
+                         HorizontalOptions="CenterAndExpand"
+                         VerticalOptions="CenterAndExpand"
+                         Margin="0">
+
+                    <Label Text="Confirm Token"
+                   FontSize="27"/>
+
+                    <Label
+                       FontSize="17"
+                       Margin="0, 0, 0, 40">
+                        <Label.FormattedText>
+                            <FormattedString>
+                                <Span Text="Enter token sent to "/>
+                                <Span Text="{Binding PhoneNumber}"
+                                  FontSize="18"
+                                  FontAttributes="Bold"/>
+                            </FormattedString>
+                        </Label.FormattedText>
+                    </Label>
+
+                    <ContentView>
+                        <Frame CornerRadius="10"
+                       HorizontalOptions="Center"
+                       Padding="0"
+                       Margin="0"
+                       HasShadow="False">
+
+                            <Grid VerticalOptions="CenterAndExpand"
+                          HorizontalOptions="Center"
+                          ColumnSpacing="8">
+
+                                <Entry x:Name="digit_1" Grid.Column="0"
+                                   WidthRequest="45"
+                                   HorizontalTextAlignment="Center"
+                                   CursorPosition="2"
+                                   SelectionLength="1"
+                                   Keyboard="Numeric"
+                                   Text="{Binding Entry_1, Mode=TwoWay}">
+
+                                    <!--<Entry.Triggers>
+                                        <EventTrigger PropertyChanged="EventTrigger_PropertyChanged"/>
+
+                                        <EventTrigger Event="Clicked">
+                                            <eventtriggers:EntryClickedEventTrigger/>
+                                        </EventTrigger>
+
+                                    </Entry.Triggers>-->
+
+                                    <Entry.Behaviors>
+                                        <behaviours:EntryFocusBehaviour NextFocusElement="digit_2"/>
+                                    </Entry.Behaviors>
+
+                                </Entry>
+
+                                <Entry x:Name="digit_2" Grid.Column="1"
+                               Text="{Binding Entry_2, Mode=TwoWay}"
+                            WidthRequest="45"
+                           HorizontalTextAlignment="Center"
+                               Keyboard="Numeric">
+                                    <Entry.Behaviors>
+                                        <behaviours:EntryFocusBehaviour NextFocusElement="digit_3"
+                                                            PreviousFocusElement="digit_1"/>
+                                    </Entry.Behaviors>
+                                </Entry>
+
+                                <Entry Text="{Binding Entry_3, Mode=TwoWay}" x:Name="digit_3" Grid.Column="2"
+                        WidthRequest="45"
+                       HorizontalTextAlignment="Center"
+                           Keyboard="Numeric">
+                                    <Entry.Behaviors>
+                                        <behaviours:EntryFocusBehaviour NextFocusElement="digit_4"
+                                                            PreviousFocusElement="digit_2"/>
+                                    </Entry.Behaviors>
+                                </Entry>
+
+                                <Entry Text="{Binding Entry_4, Mode=TwoWay}" x:Name="digit_4" Grid.Column="3"
+                        WidthRequest="45"
+                       HorizontalTextAlignment="Center"
+                           Keyboard="Numeric">
+                                    <Entry.Behaviors>
+                                        <behaviours:EntryFocusBehaviour NextFocusElement="digit_5"
+                                                            PreviousFocusElement="digit_3"/>
+                                    </Entry.Behaviors>
+                                </Entry>
+
+                                <Entry Text="{Binding Entry_5, Mode=TwoWay}" x:Name="digit_5" Grid.Column="4"
+                        WidthRequest="45"
+                       HorizontalTextAlignment="Center"
+                           Keyboard="Numeric">
+                                    <Entry.Behaviors>
+                                        <behaviours:EntryFocusBehaviour NextFocusElement="digit_6"
+                                                            PreviousFocusElement="digit_4"/>
+                                    </Entry.Behaviors>
+                                </Entry>
+
+                                <Entry Text="{Binding Entry_6, Mode=TwoWay}" x:Name="digit_6" Grid.Column="5"
+                        WidthRequest="45"
+                       HorizontalTextAlignment="Center"
+                           Keyboard="Numeric">
+                                    <Entry.Behaviors>
+                                        <behaviours:EntryFocusBehaviour PreviousFocusElement="digit_5"/>
+                                    </Entry.Behaviors>
+                                </Entry>
+                            </Grid>
+                        </Frame>
+                    </ContentView>
+
+
+                    <!--<AbsoluteLayout HorizontalOptions="Center"
+                                    VerticalOptions="Center">
+                        --><!--<ActivityIndicator IsRunning="{Binding IsBusy}"
+                                           AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds=".5, .5, 1, 1"
+                                   Color="{StaticResource label_color_2}"
+                                   Margin="0"
+                                   HeightRequest="35"/>--><!--
+                        <Label Text="{Binding TokenCountDownTime, StringFormat='wait for token : {0}'}"
+                               IsVisible="{Binding TokenCountDownVisibility}"
+                               AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds=".5, .5, 1, 1"
+                               VerticalTextAlignment="Center"
+                               FontSize="17"
+                               FontAttributes="Bold,Italic"/>
+                    </AbsoluteLayout>-->
+                    
+
+                    <Label Text="Didn't recieve the OTP?"
+                           
+                       HorizontalTextAlignment="Center"
+                       FontSize="19"/>
+
+                    <BoxView Color="Gray"
+                         HeightRequest="1"
+                         WidthRequest="240"
+                         Margin="0, 10, 10, 0"
+                         HorizontalOptions="Center"/>
+                    
+                </StackLayout>
+
+                <Label Text="Next" Grid.Row="2"
+                    FontSize="18"
+                   Margin="5"
+                    HorizontalOptions="End"
+                    VerticalOptions="End">
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding OnNextCommand}"/>
+                    </Label.GestureRecognizers>
+                </Label>
+
+            </Grid>
+
+            <!--<views:BusyIndicatorModalView IsVisible="{Binding IsBusy}"
+                                          ModalTitle="{Binding ModalTitle}"
+                                          ModalMessage="{Binding ModalMessage}"
+                                          ModalActivityIndicatorVisible="{Binding ModalActivityIndicatorVisible}"
+                                          AbsoluteLayout.LayoutFlags="All"
+                                          AbsoluteLayout.LayoutBounds=".5, .5, 1, 1"
+                                          HorizontalOptions="Center"
+                                          VerticalOptions="Center"/>-->
+        </AbsoluteLayout>
+        
+    </ContentPage.Content>
+</ContentPage>

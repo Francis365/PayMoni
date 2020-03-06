@@ -1,0 +1,109 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="PayMoni.Views.HomePage"
+             BackgroundColor="White"
+             Visual="Material">
+    <ContentPage.Content>
+        <ScrollView>
+
+            <StackLayout>
+                <Grid VerticalOptions="Start"
+                         HorizontalOptions="FillAndExpand">
+
+                    <Image Source="paymoni_logo" Grid.ColumnSpan="2"
+                       Margin="0, 0, 0, 0"
+                         HeightRequest="80"
+                         WidthRequest="150"
+                       Aspect="AspectFit"
+                   HorizontalOptions="CenterAndExpand"/>
+
+                    <Image Source="photo.png" Grid.Column="1"
+                       Aspect="AspectFit"
+                       HeightRequest="40"
+                       HorizontalOptions="EndAndExpand"
+                       VerticalOptions="Center"
+                       Margin="0, 0, 10, 0"/>
+
+                </Grid>
+
+                <Grid VerticalOptions="CenterAndExpand"
+                      RowSpacing="50"
+                      ColumnSpacing="70"
+                      Margin="10">
+
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <StackLayout Grid.Row="0" Grid.Column="0">
+                        <Frame>
+                            <Image Source="switch_payment"/>
+                        </Frame>
+                        <Label Text="Switch payment" Grid.Row="1"
+                           Grid.Column="0"
+                           FontSize="20"
+                           VerticalOptions="EndAndExpand"/>
+                        
+                    </StackLayout>
+
+
+
+                    <StackLayout  Grid.Row="0" Grid.Column="1">
+                        <Frame>
+                            <Image Source="pay_bill_icon"/>
+                        </Frame>
+
+                        <Label Text="Pay bills" Grid.Row="1"
+                               Grid.Column="0"
+                               FontSize="20"
+                               VerticalOptions="EndAndExpand"
+                               HorizontalTextAlignment="Center"/>
+                    </StackLayout>
+
+                    <StackLayout Grid.Row="1" Grid.Column="0">
+                        <Frame >
+                            <Image Source="eagle_chest"/>
+                        </Frame>
+                        
+                        <Label Text="Eagle"
+                               Grid.Column="0"
+                               FontSize="20"
+                               VerticalOptions="EndAndExpand"
+                               HorizontalTextAlignment="Center"/>
+                    </StackLayout>
+
+
+                    <StackLayout Grid.Row="1" Grid.Column="1">
+                        <Frame>
+                            <Image Source="airtime"/>
+                        </Frame>
+
+                        <Label Text="Buy Airtime"
+                               Grid.Column="0"
+                               FontSize="20"
+                               VerticalOptions="EndAndExpand"
+                               HorizontalTextAlignment="Center"/>
+                    </StackLayout>
+                </Grid>
+
+                <Grid VerticalOptions="End"
+                      Margin="10">
+                    <Button Text="Send Money" Grid.Column="0"
+                            Style="{StaticResource button_style_green}"/>
+
+                    <Button Text="Send Money" Grid.Column="1"
+                            Style="{StaticResource button_style_blue}"/>
+                </Grid>
+            </StackLayout>
+
+
+
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

@@ -1,0 +1,66 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="PayMoni.Views.UpdateAccountPage">
+    
+    <ContentPage.Content>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+
+            <Frame BorderColor="Green" Grid.Row="0">
+                <Label Text="Overview of all your loan"
+                       Style="{StaticResource label_style_1}"
+                       TextColor="Black"
+                       HorizontalTextAlignment="Center"
+                       VerticalOptions="CenterAndExpand"/>
+            </Frame>
+
+            <Grid Grid.Row="1"
+                  Padding="20">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="2*"/>
+                    <ColumnDefinition Width="8*"/>
+                </Grid.ColumnDefinitions>
+
+                <Picker Title="Select Bank" Grid.Row="0" Grid.ColumnSpan="2"
+                        HorizontalOptions="FillAndExpand"/>
+
+                <FlexLayout Direction="Column" Grid.Row="1">
+                    <Label Text=" Account number"
+                           FontSize="16"/>
+                    <Entry Placeholder="Enter account number"
+                       Keyboard="Numeric"/>
+                </FlexLayout>
+
+                <FlexLayout Direction="Column" Grid.Row="2">
+                    <Label Text=" Account name"
+                           FontSize="16"/>
+                    <Entry Placeholder="Enter account name"
+                       Keyboard="Numeric"/>
+                </FlexLayout>
+
+            </Grid>
+
+            <Button Text="Save Bank" Grid.Row="2"
+                    HorizontalOptions="Center"
+                    Margin="10"
+                    WidthRequest="180"
+                    CornerRadius="8"
+                    BackgroundColor="Green"/>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

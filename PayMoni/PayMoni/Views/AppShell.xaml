@@ -1,0 +1,244 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Shell xmlns="http://xamarin.com/schemas/2014/forms"
+        xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+        xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:views="clr-namespace:PayMoni.Views"
+        mc:Ignorable="d"
+        x:Class="PayMoni.Views.AppShell"
+       xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+       xmlns:viewmodels="clr-namespace:PayMoni.ViewModels"
+       ios:Page.UseSafeArea="True"
+       x:Name="appshell"
+       Routing.Route="appshell"
+       Shell.BackgroundColor="#257747"
+       Shell.ForegroundColor="White"
+       Shell.TitleColor="White"
+       Shell.DisabledColor="Gray"
+       Shell.UnselectedColor="White"
+       Shell.TabBarUnselectedColor="Gray"
+       Shell.FlyoutIsPresented="False">
+
+    <Shell.BindingContext>
+        <viewmodels:AppShellViewModel/>
+    </Shell.BindingContext>
+
+
+    <TabBar>
+        <Tab Title="Home"
+             Icon="home_icon">
+            <ShellContent ContentTemplate="{DataTemplate views:HomePage}"/>
+        </Tab>
+        
+        <Tab Title="Transactions"
+             Icon="history">
+            <ShellContent ContentTemplate="{DataTemplate views:TransactionHistory}"/>
+        </Tab>
+        
+        <Tab Title="Profile"
+             Icon="profile_icon">
+            <ShellContent ContentTemplate="{DataTemplate views:ProfilePage}"/>
+        </Tab>
+    </TabBar>
+
+    <!--<Shell.Resources>
+        <StyleSheet Source="/StyleSheets/styles.css"/>
+    </Shell.Resources>-->
+
+    <!--<Shell.FlyoutHeaderTemplate>
+        <DataTemplate>
+            <Grid ColumnSpacing="10"
+                  Margin="4"
+                RowSpacing="0"
+                Padding="0">
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+
+                <Label Text="{Binding ProfileName}" Grid.Column="0"
+                       Style="{StaticResource label_style_1}"
+                       FontSize="20"
+                       FontAttributes="Bold"
+                       LineBreakMode="TailTruncation"
+                       Margin="25, 0, 0, 0"
+                       HorizontalOptions="Start"
+                       HorizontalTextAlignment="Start"
+                       VerticalOptions="Center"
+                       VerticalTextAlignment="Center">
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding BindingContext.OnProfileCommand, Source={x:Reference appshell}}"/>
+                    </Label.GestureRecognizers>
+                </Label>
+
+                <ContentView HorizontalOptions="EndAndExpand" Grid.Column="1"
+                             VerticalOptions="Center"
+                             Margin="20, 12, 12, 12">
+                    <Image Source="x_icon"
+                        VerticalOptions="Center"
+                        HorizontalOptions="End"
+                        Aspect="AspectFit"
+                       HeightRequest="18"/>
+                    
+                    <ContentView.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/>
+                    </ContentView.GestureRecognizers>
+                </ContentView>
+                
+
+            </Grid>
+        </DataTemplate>
+    </Shell.FlyoutHeaderTemplate>
+
+    <Shell.ItemTemplate>
+        <DataTemplate>
+            <StackLayout Orientation="Horizontal"
+                        HeightRequest="50"
+                        Spacing="25"
+                        VerticalOptions="FillAndExpand">
+
+                <Image Source="{Binding Icon}"
+                        Margin="35, 15, 0, 12"
+                        Aspect="AspectFit"
+                        WidthRequest="25"
+                        VerticalOptions="CenterAndExpand"
+                        HorizontalOptions="Center"/>
+
+                <Label Text="{Binding Title}"
+                       VerticalOptions="CenterAndExpand"
+                       FontSize="18"
+                       FontAttributes="Bold"
+                       TextColor="White"/>
+            </StackLayout>
+
+
+        </DataTemplate>
+    </Shell.ItemTemplate>
+
+    <Shell.MenuItemTemplate>
+        <DataTemplate>
+            <StackLayout Orientation="Horizontal"
+                        HeightRequest="50"
+                        Spacing="25"
+                        VerticalOptions="FillAndExpand">
+
+                <Image Source="{Binding Icon}"
+                        Margin="35, 15, 0, 12"
+                        Aspect="AspectFit"
+                        WidthRequest="25"
+                        VerticalOptions="CenterAndExpand"
+                        HorizontalOptions="Center"/>
+
+                <Label Text="{Binding Title}"
+                       VerticalOptions="CenterAndExpand"
+                       FontSize="18"
+                       FontAttributes="Bold"
+                       TextColor="White"/>
+            </StackLayout>
+        </DataTemplate>
+    </Shell.MenuItemTemplate>
+
+    <FlyoutItem Title="Loan" Icon="wallet_icon">
+        <Tab x:Name="loan_tab">
+            <ShellContent Route="loan_content">
+
+                <ShellContent.ContentTemplate>
+                    <DataTemplate>
+                        <views:LoanPage>
+                            <Shell.TitleView>
+                                <Grid HorizontalOptions="FillAndExpand"
+                                     VerticalOptions="CenterAndExpand"
+                                      InputTransparent="False">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="Auto"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Label Text="Get Loan" Grid.Column="0"
+                                           TextColor="White"
+                                           FontSize="23"
+                                           FontAttributes="Bold"
+                                           HorizontalOptions="Start"
+                                           VerticalOptions="CenterAndExpand"
+                                           VerticalTextAlignment="Center"/>
+
+                                    <Image Source="ic_action_account_circle.png" Grid.Column="1"
+                                            HorizontalOptions="End"
+                                            VerticalOptions="CenterAndExpand"
+                                            BackgroundColor="Transparent"
+                                            Aspect="AspectFit"
+                                            HeightRequest="50"
+                                            WidthRequest="50"
+                                            Margin="5">
+                                        <Image.GestureRecognizers>
+                                            <TapGestureRecognizer Command="{Binding BindingContext.OnProfileCommand, Source={x:Reference appshell}}"/>
+                                        </Image.GestureRecognizers>
+                                    </Image>
+                                </Grid>
+
+                            </Shell.TitleView>
+                        </views:LoanPage>
+                    </DataTemplate>
+                </ShellContent.ContentTemplate>
+                
+            </ShellContent>
+        </Tab>
+
+    </FlyoutItem>
+
+    --><!--<FlyoutItem Title="Request More Loan" Icon="additional_loan_icon.png">
+        <Tab>
+            <ShellContent>
+                <views:RequestMoreLoanPage/>
+            </ShellContent>
+        </Tab>
+
+    </FlyoutItem>--><!--
+    
+    <FlyoutItem Title="Loan History" Icon="history_icon">
+        <Tab Route="history_content">
+            <ShellContent ContentTemplate="{DataTemplate views:LoanHistoryPage}"/>
+        </Tab>
+    </FlyoutItem>
+
+    <FlyoutItem Title="Referral" Icon="referral_icon">
+        <Tab Route="referral_content">
+            <ShellContent ContentTemplate="{DataTemplate views:ReferralPage}"/>
+        </Tab>
+    </FlyoutItem>
+
+    <FlyoutItem Title="How it works" Icon="document_icon">
+        <Tab Route="howitworks_content">
+            <ShellContent ContentTemplate="{DataTemplate views:HowItWorksPage}"/>
+        </Tab>
+    </FlyoutItem>
+
+    <FlyoutItem Title="Customer Care" Icon="cc_icon">
+        <Tab Route="cc_content">
+            <ShellContent ContentTemplate="{DataTemplate views:CustomerCarePage}"/>
+        </Tab>
+    </FlyoutItem>
+
+    <FlyoutItem Title="Profile" Icon="profile_default_icon">
+        <Tab Route="profile_content">
+            <ShellContent>
+                <views:ProfilePage/>
+            </ShellContent>
+        </Tab>
+    </FlyoutItem>
+
+    <MenuItem Text="Logout"
+                        IconImageSource="logout_icon.png"
+                        Command="{Binding OnLogoutCommand}"/>-->
+
+    <!--<FlyoutItem>
+        <Tab>
+            <ShellContent>
+                <MenuItem Text="Logout"
+                          IconImageSource="logout_icon.png"
+                          Command="{Binding OnLogoutCommand}"/>
+            </ShellContent>
+        </Tab>
+    </FlyoutItem>-->
+
+</Shell>

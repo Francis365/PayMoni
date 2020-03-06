@@ -1,0 +1,130 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:viewmodels="clr-namespace:PayMoni.ViewModels"
+             mc:Ignorable="d"
+             Shell.NavBarIsVisible="False"
+             x:Class="PayMoni.Views.RegisterPage"
+             NavigationPage.HasNavigationBar="false"
+             BackgroundColor="White"
+             Visual="Material">
+
+    <ContentPage.BindingContext>
+        <viewmodels:RegisterViewModel/>
+    </ContentPage.BindingContext>
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style TargetType="Button">
+                <Setter Property="CornerRadius" Value="8"/>
+                <Setter Property="BorderColor" Value="Gainsboro"/>
+                <Setter Property="BorderWidth" Value="1"/>
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <ContentPage.Content>
+
+        <AbsoluteLayout>
+            <FlexLayout Direction="Column"
+                        Opacity="{Binding Opacity}"
+                        AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0, 0, 1, 1"
+                        AlignContent="Center"
+                        AlignItems="Stretch"
+                        JustifyContent="SpaceAround"
+                    Padding="20">
+
+                <ContentView VerticalOptions="FillAndExpand"
+                         HorizontalOptions="StartAndExpand">
+
+                    <Image Source="paymoni_logo"
+                           Aspect="AspectFit"
+                           HeightRequest="60"
+                           VerticalOptions="CenterAndExpand"
+                           HorizontalOptions="CenterAndExpand"/>
+
+                </ContentView>
+
+                <StackLayout VerticalOptions="CenterAndExpand">
+
+                    <Label Text="Enter phone number"
+                       VerticalOptions="CenterAndExpand"
+                           HorizontalOptions="Center"
+                           TextColor="Black"
+                       FontSize="28"/>
+
+                    <Label Text="We will send you an OTP message"
+                           HorizontalTextAlignment="Center"
+                       FontSize="18"
+                       Margin="0, 0, 0, 20"/>
+
+                    <Frame CornerRadius="10"
+                       Padding="10, 0, 0, 0"
+                       HasShadow="False"
+                       Margin="0, 15, 0, 0">
+
+                        <FlexLayout Direction="Column"
+                                JustifyContent="SpaceEvenly"
+                                AlignContent="Stretch"
+                                AlignItems="Stretch"
+                                VerticalOptions="CenterAndExpand"
+                                Padding="0">
+                            <!--<Label Text=" Username"
+                           VerticalOptions="CenterAndExpand"
+                           Margin="0"
+                           FontSize="16"/>-->
+                            <Entry Text="{Binding PhoneNumber, Mode=OneWayToSource}" 
+                               BackgroundColor="Transparent"
+                               VerticalOptions="CenterAndExpand"
+                               Margin="0"
+                               Placeholder="Phone number"
+                               Keyboard="Numeric"/>
+                        </FlexLayout>
+                    </Frame>
+
+                    
+                </StackLayout>
+
+
+                <AbsoluteLayout HorizontalOptions="CenterAndExpand"
+                                Margin="50, 0, 50, 0">
+                    <Button Text="Proceed" AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="1,1,1,1"
+                            Style="{StaticResource button_style_blue}"
+                            FontSize="20"
+                            TextColor="White"
+                            BorderWidth="1"
+                            BorderColor="White"
+                            Padding="5"
+                        Command="{Binding OnRegisterCommand}"/>
+
+                    <Image Source="arrow" AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="1, .5, 1, 1"
+                           VerticalOptions="Center"
+                           HorizontalOptions="EndAndExpand"
+                           Margin="0, 0, 15, 0"/>
+
+                    <ActivityIndicator IsRunning="{Binding RegisterBusy}"
+                                       AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0, 0, 1, 1"
+                                       HorizontalOptions="Start"
+                                       VerticalOptions="Center"
+                                       Margin="10, 0, 0, 0"
+                                       Color="White"
+                                       HeightRequest="25"/>
+                </AbsoluteLayout>
+
+            </FlexLayout>
+
+            <!--<views:BusyIndicatorModalView IsVisible="{Binding IsBusy}"
+                                          ModalTitle="Registering User"
+                                          ModalMessage="Please wait..."
+                                          ModalActivityIndicatorVisible="True"
+                                          AbsoluteLayout.LayoutFlags="All"
+                                          AbsoluteLayout.LayoutBounds=".5, .5, 1, 1"
+                                          HorizontalOptions="Center"
+                                          VerticalOptions="Center"/>-->
+        </AbsoluteLayout>
+        
+        
+    </ContentPage.Content>
+</ContentPage>

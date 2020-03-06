@@ -1,0 +1,45 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Application xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="PayMoni.App">
+    <Application.Resources>
+
+        <ResourceDictionary>
+
+            <Color x:Key="label_color_white">#ffffff</Color>
+            <Color x:Key="label_color_blue">#0057FF</Color>
+            <Color x:Key="label_color_green">#4E901E</Color>
+            <Color x:Key="label_color_dark">#f5f5f5</Color>
+
+            <!--<StyleSheet x:Key="stylee" Source="/StyleSheets/styles.css"/>-->
+
+            <Style x:Key="button_style_blue" TargetType="Button">
+                <Setter Property="CornerRadius" Value="10"/>
+                <Setter Property="TextColor" Value="White"/>
+                <Setter Property="BorderColor" Value="{StaticResource label_color_white}"/>
+                <Setter Property="BorderWidth" Value="1"/>
+                <Setter Property="Padding" Value="12"/>
+                <Setter Property="BackgroundColor" Value="{StaticResource label_color_blue}"/>
+                <Setter Property="FontAttributes" Value="Bold"/>
+            </Style>
+
+            <Style x:Key="button_style_green" TargetType="Button">
+                <Setter Property="CornerRadius" Value="10"/>
+                <Setter Property="TextColor" Value="White"/>
+                <Setter Property="BorderColor" Value="{StaticResource label_color_white}"/>
+                <Setter Property="BorderWidth" Value="1"/>
+                <Setter Property="Padding" Value="12"/>
+                <Setter Property="BackgroundColor" Value="{StaticResource label_color_green}"/>
+                <Setter Property="FontAttributes" Value="Bold"/>
+            </Style>
+
+            <Style x:Key="label_style_blue" TargetType="Label">
+                <Setter Property="TextColor" Value="{StaticResource label_color_blue}"/>
+                <Setter Property="FontSize" Value="20"/>
+            </Style>
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>
